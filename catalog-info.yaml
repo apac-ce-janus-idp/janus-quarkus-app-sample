@@ -1,0 +1,39 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "quarkus-app-sample"
+  annotations:
+    argocd/app-name: quarkus-app-sample-dev
+    backstage.io/kubernetes-id: quarkus-app-sample
+    backstage.io/kubernetes-namespace: quarkus-app-sample-dev
+    janus-idp.io/tekton-enabled : 'true'
+    github.com/project-slug: apac-ce-janus-idp/janus-quarkus-app-sample
+    quay.io/repository-slug: "/quarkus-app-sample"
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://devspaces.apps.ocp-6620029te1-u2l4.cloud.techzone.ibm.com/#https://github.com/apac-ce-janus-idp/janus-quarkus-app-sample?che-editor=che-incubator/che-code/insiders&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: https://devspaces.apps.ocp-6620029te1-u2l4.cloud.techzone.ibm.com/#https://github.com/apac-ce-janus-idp/janus-quarkus-app-sample?che-editor=che-incubator/che-idea/latest&devfilePath=.devfile-intellij.yaml
+      title: OpenShift Dev Spaces (JetBrains IntelliJ)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "group:default/janus-idp-team"
+  providesApis:
+    - "quarkus-app-sample"
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "quarkus-app-sample"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "group:default/janus-idp-team"
+  definition:
+    $text: ./openapi.yaml
