@@ -1,6 +1,6 @@
 # quarkus-app-sample
 
-
+sample text
 
 ## Running the application in dev mode
 
